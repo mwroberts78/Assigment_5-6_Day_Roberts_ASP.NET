@@ -85,5 +85,14 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTaxResult;
+
+        /// <summary>
+        /// CaptchaControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Assigment_5_6_Day_Roberts_ASP.NET.Captcha CaptchaControl;
     }
 }

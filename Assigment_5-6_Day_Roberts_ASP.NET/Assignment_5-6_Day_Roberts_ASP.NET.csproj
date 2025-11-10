@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="Captcha_Control\CaptchaImage.ashx" />
     <None Include="Connected Services\Day_Roberts_Service\Service1.disco" />
     <None Include="Connected Services\Day_Roberts_Service\configuration91.svcinfo" />
     <None Include="Connected Services\Day_Roberts_Service\configuration.svcinfo" />
@@ -109,6 +110,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Captcha_Control\Captcha.ascx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -208,6 +210,16 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Captcha_Control\Captcha.ascx.cs">
+      <DependentUpon>Captcha.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Captcha_Control\Captcha.ascx.designer.cs">
+      <DependentUpon>Captcha.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Captcha_Control\CaptchaImage.ashx.cs">
+      <DependentUpon>CaptchaImage.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\Day_Roberts_Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
