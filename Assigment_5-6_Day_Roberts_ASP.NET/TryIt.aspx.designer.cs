@@ -11,7 +11,7 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
 {
 
 
-    public partial class _Default
+    public partial class TryIt
     {
 
         /// <summary>
@@ -85,6 +85,33 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTaxResult;
+
+        /// <summary>
+        /// txtPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+
+        /// <summary>
+        /// btnHashPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnHashPassword;
+
+        /// <summary>
+        /// lblHashedPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHashedPassword;
 
         /// <summary>
         /// CaptchaControl control.

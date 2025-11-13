@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TryIt.aspx.cs" Inherits="Assigment_5_6_Day_Roberts_ASP.NET._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TryIt.aspx.cs" Inherits="Assigment_5_6_Day_Roberts_ASP.NET.TryIt" %>
 <%@ Register Src="~/Captcha_Control/Captcha.ascx" TagPrefix="uc" TagName="Captcha" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -23,6 +23,15 @@
     <asp:Button ID="btnGetSalesTax" runat="server" Text="Get Sales Tax" OnClick="btnGetSalesTax_Click" />
     <br />
     <asp:Label ID="lblTaxResult" runat="server" ForeColor="Green" />
+
+    <hr />
+
+    <h2>Hash Password</h2>
+    <asp:Label runat="server" Text="Password:" AssociatedControlID="txtPassword" />
+    <asp:TextBox ID="txtPassword" runat="server" />
+    <asp:Button ID="btnHashPassword" runat="server" Text="Hash Password" OnClick="btnHashPassword_Click" />
+    <br />
+    <asp:Label ID="lblHashedPassword" runat="server" ForeColor="Green" />
 
     <hr />
 
