@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Assignment_5-6_Day_Roberts_DLL">
+      <HintPath>..\Assignment_5-6_Day_Roberts_DLL\bin\Debug\net9.0\Assignment_5-6_Day_Roberts_DLL.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />

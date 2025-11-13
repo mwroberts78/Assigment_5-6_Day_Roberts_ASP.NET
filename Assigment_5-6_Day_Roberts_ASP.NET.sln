@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_5-6_Day_Roberts_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_5-6_Day_Roberts_Service", "Assignment_5-6_Day_Roberts_Service\Assignment_5-6_Day_Roberts_Service.csproj", "{F81AC123-E62C-4337-87B5-0C9BF8334308}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_5-6_Day_Roberts_DLL", "Assignment_5-6_Day_Roberts_DLL\Assignment_5-6_Day_Roberts_DLL.csproj", "{27619EE4-63A2-4C2E-9AA8-F34D3C920A7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{F81AC123-E62C-4337-87B5-0C9BF8334308}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F81AC123-E62C-4337-87B5-0C9BF8334308}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F81AC123-E62C-4337-87B5-0C9BF8334308}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27619EE4-63A2-4C2E-9AA8-F34D3C920A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27619EE4-63A2-4C2E-9AA8-F34D3C920A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27619EE4-63A2-4C2E-9AA8-F34D3C920A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27619EE4-63A2-4C2E-9AA8-F34D3C920A7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
