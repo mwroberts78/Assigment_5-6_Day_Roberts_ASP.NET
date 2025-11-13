@@ -1,10 +1,10 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Assigment_5_6_Day_Roberts_ASP.NET._Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TryIt.aspx.cs" Inherits="Assigment_5_6_Day_Roberts_ASP.NET._Default" %>
 <%@ Register Src="~/Captcha_Control/Captcha.ascx" TagPrefix="uc" TagName="Captcha" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
   
-    <%--<h2>Estimate Shipping</h2>
+    <h2>Estimate Shipping</h2>
     <asp:Label runat="server" Text="ZIP Code:" AssociatedControlID="txtZipShipping" />
     <asp:TextBox ID="txtZipShipping" runat="server" />
     <asp:Label runat="server" Text="Package Weight:" AssociatedControlID="txtWeight" />
@@ -27,7 +27,7 @@
     <hr />
 
     <h2>Captcha</h2>
-    <uc:Captcha ID="CaptchaControl" runat="server" />--%>
+    <uc:Captcha ID="CaptchaControl" runat="server" />
   
 
 </asp:Content>
