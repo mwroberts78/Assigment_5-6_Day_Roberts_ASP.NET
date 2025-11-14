@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace Assigment_5_6_Day_Roberts_ASP.NET
 {
@@ -67,6 +68,28 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
             {
                 lblHashedPassword.Text = $"Error: {ex.Message}";
             }
+        }
+
+        protected void btnShowRewardsInfo_Click(object sender, EventArgs e)
+        {
+            var list = Application["RewardsList"] as List<XElement>;
+
+            lblRewardsInfo.Text =
+                list != null
+                ? $"Rewards loaded at startup: {list.Count} items<br/>"
+                : "Rewards not loaded.";
+
+            string rewardsNames = "<ul>";
+
+            foreach (var reward in list)
+            {
+                rewardsNames += "<li>" + reward.Element("name")?.Value + "</li>";
+            }
+
+            rewardsNames += "</ul";
+
+            lblRewardsNames.Text = rewardsNames;
+
         }
     }
 }

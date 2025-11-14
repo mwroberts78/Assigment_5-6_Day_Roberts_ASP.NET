@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rewards xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="rewards.xsd">
+
+	<reward id="R001">
+		<name>5% Off Coupon</name>
+		<cost>50</cost>
+		<weight>0.1</weight>
+	</reward>
+
+	<reward id="R002">
+		<name>Free Coffee Mug</name>
+		<cost>100</cost>
+		<weight>0.8</weight>
+	</reward>
+
+	<reward id="R003">
+		<name>Premium Tote Bag</name>
+		<cost>150</cost>
+		<weight>1.2</weight>
+	</reward>
+
+	<reward id="R004">
+		<name>$10 Gift Card</name>
+		<cost>200</cost>
+		<weight>0.05</weight>
+	</reward>
+
+	<reward id="R005">
+		<name>Wireless Earbuds</name>
+		<cost>300</cost>
+		<weight>0.4</weight>
+	</reward>
+
+</rewards>

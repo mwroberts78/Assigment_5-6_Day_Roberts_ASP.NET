@@ -105,10 +105,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="App_Data\rewards.xml" />
     <Content Include="Captcha_Control\CaptchaImage.ashx" />
     <Content Include="Members.aspx" />
     <Content Include="TryIt.aspx" />
     <Content Include="Staff.aspx" />
+    <None Include="App_Data\rewards.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\Day_Roberts_Service\Service1.disco" />
     <None Include="Connected Services\Day_Roberts_Service\configuration91.svcinfo" />
     <None Include="Connected Services\Day_Roberts_Service\configuration.svcinfo" />
@@ -292,9 +296,7 @@
       <DependentUpon>Staff.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />

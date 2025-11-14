@@ -35,6 +35,23 @@
 
     <hr />
 
+     <h2>Preloaded Rewards</h2>
+    <p>
+        This section demonstrates loading data at Application Start and storing it in each user's Session.
+    </p>
+    <p>
+        The rewards are loaded into the application cache at app start and into each user's session when they first visit this page.
+    </p>
+    <p>
+        You can click the button to show the rewards that are stored in your session.
+    </p>
+     <asp:Button ID="btnShowRewardsInfo" runat="server" Text="Show Session Rewards" OnClick="btnShowRewardsInfo_Click" />
+     <br />
+     <asp:Label ID="lblRewardsInfo" runat="server" ForeColor="Green" />
+    <asp:Label ID="lblRewardsNames" runat="server" ForeColor="Green" />
+
+     <hr />
+
     <h2>Captcha</h2>
     <uc:Captcha ID="CaptchaControl" runat="server" />
   
