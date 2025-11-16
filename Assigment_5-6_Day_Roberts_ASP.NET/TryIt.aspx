@@ -4,7 +4,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
   
-    <h2>Estimate Shipping</h2>
+    <h2 id="justinServiceSection">Estimate Shipping</h2>
     <asp:Label runat="server" Text="ZIP Code:" AssociatedControlID="txtZipShipping" />
     <asp:TextBox ID="txtZipShipping" runat="server" />
     <asp:Label runat="server" Text="Package Weight:" AssociatedControlID="txtWeight" />
@@ -15,7 +15,7 @@
 
     <hr />
 
-    <h2>Get Sales Tax</h2>
+    <h2 id="mattServiceSection">Get Sales Tax</h2>
     <asp:Label runat="server" Text="ZIP Code:" AssociatedControlID="txtZipTax" />
     <asp:TextBox ID="txtZipTax" runat="server" />
     <asp:Label runat="server" Text="Amount:" AssociatedControlID="txtAmount" />
@@ -26,7 +26,7 @@
 
     <hr />
 
-    <h2>Hash Password</h2>
+    <h2 id="hashSection">Hash Password</h2>
     <asp:Label runat="server" Text="Password:" AssociatedControlID="txtPassword" />
     <asp:TextBox ID="txtPassword" runat="server" />
     <asp:Button ID="btnHashPassword" runat="server" Text="Hash Password" OnClick="btnHashPassword_Click" />
@@ -35,7 +35,7 @@
 
     <hr />
 
-     <h2>Preloaded Rewards</h2>
+    <h2 id="globalasaxSection">Preloaded Rewards</h2>
     <p>
         This section demonstrates loading data at Application Start and storing it in each user's Session.
     </p>
@@ -52,7 +52,7 @@
 
      <hr />
 
-    <h2>Captcha</h2>
+    <h2 id="captchaSection">Captcha</h2>
     <uc:Captcha ID="CaptchaControl" runat="server" />
   
 
