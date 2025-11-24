@@ -3,6 +3,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <p>
-        Once fully functional, this page will allow logged in staff members to adjust members rewards points.
+        <asp:Label ID="lblLoggedIn" runat="server"></asp:Label>
     </p>
 </asp:Content>

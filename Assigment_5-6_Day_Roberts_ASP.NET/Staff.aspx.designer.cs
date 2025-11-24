@@ -13,5 +13,14 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
 
     public partial class Staff
     {
+
+        /// <summary>
+        /// lblLoggedIn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLoggedIn;
     }
 }

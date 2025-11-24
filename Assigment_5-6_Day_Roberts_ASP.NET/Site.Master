@@ -33,6 +33,9 @@
              text-align: center;
              font-weight: bold;
          }
+         table.noborder, table.noborder td, table.noborder th {
+             border: none !important;
+         }
     </style>
 
 </head>

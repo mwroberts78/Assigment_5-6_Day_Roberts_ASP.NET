@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<members xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="members.xsd">
+  <member id="M001">
+    <username>testuser</username>
+    <passwordHash>ae5deb822e0d71992900471a7199d0d95b8e7c9d05c40a8245a281fd2c1d6684</passwordHash>
+    <email>testuser@example.com</email>
+    <points>1000</points>
+    <createdUtc>2025-01-01T00:00:00Z</createdUtc>
+  </member>
+  <member id="M002">
+    <username>matt.w.roberts78@gmail.com</username>
+    <passwordHash>80bc40ff0660250347990acb6ad398b8c4369baa53f7a2614ebd0598d32b4749</passwordHash>
+    <email>matt.w.roberts78@gmail.com</email>
+    <points>0</points>
+    <createdUtc>2025-11-24 19:11:33Z</createdUtc>
+  </member>
+</members>

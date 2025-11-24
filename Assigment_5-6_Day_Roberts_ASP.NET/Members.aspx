@@ -3,7 +3,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <p>
-        Once fully functional, this page will allow logged in members to use their rewards points to "purchase" items.
-        It will show the shipping and sale tax costs of the selected items.
+        <asp:Label ID="lblLoggedIn" runat="server"></asp:Label>
     </p>
 </asp:Content>

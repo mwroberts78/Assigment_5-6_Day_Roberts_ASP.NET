@@ -44,9 +44,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assignment_5-6_Day_Roberts_DLL">
-      <HintPath>..\Assignment_5-6_Day_Roberts_DLL\bin\Debug\net9.0\Assignment_5-6_Day_Roberts_DLL.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -107,12 +104,23 @@
     <Content Include="About.aspx" />
     <Content Include="ApplicationTable.aspx" />
     <Content Include="App_Data\rewards.xml" />
+    <Content Include="App_Data\staff.xml" />
+    <Content Include="App_Data\members.xml" />
     <Content Include="Captcha_Control\CaptchaImage.ashx" />
     <Content Include="Home.aspx" />
+    <Content Include="MemberLogin.aspx" />
     <Content Include="Members.aspx" />
+    <Content Include="RegisterMember.aspx" />
+    <Content Include="StaffLogin.aspx" />
     <Content Include="TryIt.aspx" />
     <Content Include="Staff.aspx" />
+    <None Include="App_Data\members.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="App_Data\rewards.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App_Data\staff.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\Day_Roberts_Service\Service1.disco" />
@@ -268,6 +276,13 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MemberLogin.aspx.cs">
+      <DependentUpon>MemberLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberLogin.aspx.designer.cs">
+      <DependentUpon>MemberLogin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Members.aspx.cs">
       <DependentUpon>Members.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -276,6 +291,13 @@
       <DependentUpon>Members.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegisterMember.aspx.cs">
+      <DependentUpon>RegisterMember.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterMember.aspx.designer.cs">
+      <DependentUpon>RegisterMember.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -289,6 +311,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StaffLogin.aspx.cs">
+      <DependentUpon>StaffLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaffLogin.aspx.designer.cs">
+      <DependentUpon>StaffLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
