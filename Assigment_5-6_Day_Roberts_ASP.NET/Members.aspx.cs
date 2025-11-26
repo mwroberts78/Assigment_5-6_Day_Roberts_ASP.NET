@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace Assigment_5_6_Day_Roberts_ASP.NET
 {
@@ -23,9 +24,173 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
                 if (user != null)
                 {
                     string username = (string)user.Element("email");
+                    string points = (string)user.Element("points");
                     lblLoggedIn.Text = "Logged in as: <strong>" + username + "</strong>";
+                    lblRemainingPoints.Text = "Remaining points: <strong>" + points + "</strong>";
                 }
             }
+
+            if (!IsPostBack)
+            {
+                BindRewards();
+            }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session["member_user"] = null;
+            Response.Redirect(Request.RawUrl); // Refreshes the page
+        }
+
+        private void BindRewards()
+        {
+            string xmlPath = Server.MapPath("~/App_Data/rewards.xml");
+            var rewards = new List<RewardInfo>();
+
+            if (System.IO.File.Exists(xmlPath))
+            {
+                XDocument doc = XDocument.Load(xmlPath);
+                rewards = doc.Descendants("reward")
+                    .Select(x => new RewardInfo
+                    {
+                        Id = (string)x.Attribute("id"),
+                        Name = (string)x.Element("name"),
+                        Cost = (string)x.Element("cost"),
+                        Weight = (string)x.Element("weight"),
+                        ImageUrl = ResolveUrl("~/" + (string)x.Element("imageUrl"))
+                    })
+                    .ToList();
+            }
+
+            gvRewards.DataSource = rewards;
+            gvRewards.DataBind();
+        }
+
+        protected void gvRewards_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        {
+            string rewardId = e.CommandArgument.ToString();
+
+            // Load rewards.xml and find the reward by id
+            string xmlPath = Server.MapPath("~/App_Data/rewards.xml");
+            XDocument doc = XDocument.Load(xmlPath);
+            var reward = doc.Descendants("reward")
+                .FirstOrDefault(x => (string)x.Attribute("id") == rewardId);
+
+            if (reward == null)
+            {
+                ShowErrorModal("Reward not found.");
+            }
+
+            // Get cost and weight from XML
+            int cost = int.Parse((string)reward.Element("cost"));
+            double weight = double.Parse((string)reward.Element("weight"));
+            decimal dollarValue = decimal.Parse((string)reward.Element("dollarValue"));
+
+            // Get user points from session
+            var user = Session["member_user"] as System.Xml.Linq.XElement;
+            int userPoints = int.Parse((string)user.Element("points"));
+
+            if (userPoints < cost)
+            {
+                ShowErrorModal($"You do not have enough points to purchase this reward. You need {cost - userPoints} more points.");
+                return;
+            }
+
+            confirmRewardId = rewardId;
+            confirmDollarValue = dollarValue;
+            confirmWeight = weight;
+
+            lblConfirmMessage.Text = $"<strong>Reward:</strong> {(string)reward.Element("name")}<br />" +
+                $"<strong>Item Value:</strong> {dollarValue:C}<br />" +
+                $"<strong>Cost in Points:</strong> {cost} points<br /><br />" +
+                $"Enter your ZIP code to calculate shipping and tax.";
+
+            lblShipping.Text = "";
+            lblTax.Text = "";
+            lblTotal.Text = "";
+
+            btnRedeem.Visible = false;
+
+            pnlConfirm.Style["display"] = "block";
+            ScriptManager.RegisterStartupScript(this, GetType(), "showConfirm", $"document.getElementById('{pnlConfirm.ClientID}').style.display='block';", true);
+
+        }
+
+        protected void btnUpdateZip_Click(object sender, EventArgs e)
+        {
+            string zip = txtZip.Text.Trim();
+            if (string.IsNullOrEmpty(zip))
+            {
+                lblShipping.Text = "";
+                lblTax.Text = "";
+                lblTotal.Text = "";
+                lblConfirmMessage.Text += "<br /><span style='color:red'>Please enter a ZIP code.</span>";
+                return;
+            }
+
+            // Calculate shipping and tax
+            string shippingStr = GetShippingCost(zip, confirmWeight.ToString());
+            string taxStr = GetSalesTax(zip, confirmDollarValue.ToString());
+
+            decimal shipping = 0m, tax = 0m;
+            decimal.TryParse(shippingStr.Replace("$", "").Replace(",", ""), out shipping);
+            decimal.TryParse(taxStr.Replace("$", "").Replace(",", ""), out tax);
+
+            decimal total = shipping + tax;
+
+            lblShipping.Text = $"<strong>Shipping:</strong> {shipping:C}";
+            lblTax.Text = $"<strong>Sales Tax:</strong> {tax:C}";
+            lblTotal.Text = $"<strong>Total Cost:</strong> {total:C}";
+
+            // Show Redeem button only after successful calculation
+            btnRedeem.Visible = true;
+        }
+
+        protected void btnRedeem_Click(object sender, EventArgs e)
+        {
+            string xmlPath = Server.MapPath("~/App_Data/rewards.xml");
+            string membersPath = Server.MapPath("~/App_Data/members.xml");
+
+            XDocument doc = XDocument.Load(xmlPath);
+            var reward = doc.Descendants("reward")
+                .FirstOrDefault(x => (string)x.Attribute("id") == confirmRewardId);
+
+            Redeem((string)reward.Element("cost"));
+
+            pnlConfirm.Style["display"] = "none";
+            ScriptManager.RegisterStartupScript(this, GetType(), "hideConfirm", $"document.getElementById('{pnlConfirm.ClientID}').style.display='none';", true);
+
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btnCloseConfirm_Click(object sender, EventArgs e)
+        {
+            pnlConfirm.Style["display"] = "none";
+            ScriptManager.RegisterStartupScript(this, GetType(), "hideConfirm", $"document.getElementById('{pnlConfirm.ClientID}').style.display='none';", true);
+        }
+
+        protected void btnCloseModal_Click(object sender, EventArgs e)
+        {
+            pnlModal.Style["display"] = "none";
+            ScriptManager.RegisterStartupScript(this, GetType(), "hideModal", "document.getElementById('" + pnlModal.ClientID + "').style.display='none';", true);
+        }
+
+        private void ShowErrorModal(string message)
+        {
+            lblModalMessage.Text = message;
+            pnlModal.Style["display"] = "block";
+            ScriptManager.RegisterStartupScript(
+                this, GetType(), "showModal",
+                $"document.getElementById('{pnlModal.ClientID}').style.display='block';", true);
+        }
+
+        public class RewardInfo
+        {
+            public string Id { get; set; }
+            public string Name { get; set; }
+            public string Cost { get; set; }
+            public string Weight { get; set; }
+            public string ImageUrl { get; set; }
         }
 
         protected string Redeem(string cost) 
@@ -126,6 +291,22 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
                 result = $"Error: {ex.Message}";
             }
             return result;
+        }
+
+        private string confirmRewardId
+        {
+            get { return ViewState["ConfirmRewardId"] as string; }
+            set { ViewState["ConfirmRewardId"] = value; }
+        }
+        private decimal confirmDollarValue
+        {
+            get { return ViewState["ConfirmDollarValue"] != null ? (decimal)ViewState["ConfirmDollarValue"] : 0m; }
+            set { ViewState["ConfirmDollarValue"] = value; }
+        }
+        private double confirmWeight
+        {
+            get { return ViewState["ConfirmWeight"] != null ? (double)ViewState["ConfirmWeight"] : 0.0; }
+            set { ViewState["ConfirmWeight"] = value; }
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace Assigment_5_6_Day_Roberts_ASP.NET
 {
@@ -15,7 +16,7 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
             {
                 Response.Redirect("~/StaffLogin.aspx");
                 return;
-            } 
+            }
             else
             {
                 var user = Session["staff_user"] as System.Xml.Linq.XElement;
@@ -23,6 +24,42 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
                 {
                     string username = (string)user.Element("username");
                     lblLoggedIn.Text = "Logged in as: <strong>" + username + "</strong>";
+                }
+            }
+
+            if (!IsPostBack)
+            {
+                BindMembers();
+            }
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session["staff_user"] = null;
+            Response.Redirect(Request.RawUrl); // Refreshes the page
+        }
+
+        protected void gvMembers_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "UpdatePoints")
+            {
+                // Find the row index
+                int index = Convert.ToInt32(((GridViewRow)((Button)e.CommandSource).NamingContainer).RowIndex);
+                GridViewRow row = gvMembers.Rows[index];
+                string email = e.CommandArgument.ToString();
+                TextBox txtNewPoints = (TextBox)row.FindControl("txtNewPoints");
+                string newPoints = txtNewPoints.Text.Trim();
+
+                string result = UpdatePoints(email, newPoints);
+                if (string.IsNullOrEmpty(result))
+                {
+                    // Success, rebind grid
+                    BindMembers();
+                }
+                else
+                {
+                    // Optionally show error
+                    lblLoggedIn.Text += "<br /><span style='color:red'>" + result + "</span>";
                 }
             }
         }
@@ -54,7 +91,7 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
                 }
 
             }
-            else 
+            else
             {
                 result = "Username or points missing.";
                 return result;
@@ -63,4 +100,45 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
             return result;
 
         }
+
+        private void BindMembers()
+        {
+            string xmlPath = Server.MapPath("~/App_Data/members.xml");
+            var members = new List<MemberInfo>();
+
+            if (System.IO.File.Exists(xmlPath))
+            {
+                XDocument doc = XDocument.Load(xmlPath);
+                members = doc.Descendants("member")
+                    .Select(x => new MemberInfo
+                    {
+                        Id = (string)x.Attribute("id"),
+                        Username = (string)x.Element("username"),
+                        Email = (string)x.Element("email"),
+                        Points = (string)x.Element("points"),
+                        CreatedUtc = FormatDate((string)x.Element("createdUtc"))
+                    })
+                    .ToList();
+            }
+
+            gvMembers.DataSource = members;
+            gvMembers.DataBind();
+        }
+
+        private string FormatDate(string utcString)
+        {
+            if (DateTime.TryParse(utcString, out DateTime dt))
+                return dt.ToLocalTime().ToString("MMM dd, yyyy HH:mm");
+            return utcString;
+        }
+
+        public class MemberInfo
+        {
+            public string Id { get; set; }
+            public string Username { get; set; }
+            public string Email { get; set; }
+            public string Points { get; set; }
+            public string CreatedUtc { get; set; }
+        }
+    }
 }

@@ -103,9 +103,14 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="ApplicationTable.aspx" />
+    <Content Include="images\gift_card.png" />
+    <Content Include="images\5percent_coupon.png" />
+    <Content Include="images\coffee_mug.jpg" />
+    <Content Include="images\ear_buds.png" />
     <Content Include="App_Data\rewards.xml" />
     <Content Include="App_Data\staff.xml" />
     <Content Include="App_Data\members.xml" />
+    <Content Include="images\tote_bag.jpg" />
     <Content Include="Captcha_Control\CaptchaImage.ashx" />
     <Content Include="Home.aspx" />
     <Content Include="MemberLogin.aspx" />

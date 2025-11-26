@@ -30,13 +30,13 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
-                lblMessage.Text = "All fields are required.";
+                ShowModalMessage("All fields are required.");
                 return;
             }
 
             if (password != confirmPassword)
             {
-                lblMessage.Text = "Passwords do not match.";
+                ShowModalMessage("Passwords do not match.");
                 return;
             }
 
@@ -58,7 +58,7 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
 
             if (exists)
             {
-                lblMessage.Text = "A member with this email already exists.";
+                ShowModalMessage("A member with this email already exists.");
                 return;
             }
 
@@ -81,7 +81,7 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
                 new XElement("username", email),
                 new XElement("passwordHash", passwordHash),
                 new XElement("email", email),
-                new XElement("points", 0),
+                new XElement("points", 500),
                 new XElement("createdUtc", DateTime.UtcNow.ToString("u"))
             );
 
@@ -89,6 +89,21 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
             doc.Save(xmlPath);
 
             Response.Redirect("~/MemberLogin.aspx?registered=1");
+        }
+
+        protected void btnCloseModal_Click(object sender, EventArgs e)
+        {
+            pnlModal.Style["display"] = "none";
+            ScriptManager.RegisterStartupScript(this, GetType(), "hideModal",
+                $"document.getElementById('{pnlModal.ClientID}').style.display='none';", true);
+        }
+
+        private void ShowModalMessage(string message)
+        {
+            lblModalMessage.Text = message;
+            pnlModal.Style["display"] = "block";
+            ScriptManager.RegisterStartupScript(this, GetType(), "showModal",
+                $"document.getElementById('{pnlModal.ClientID}').style.display='block';", true);
         }
     }
 }

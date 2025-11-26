@@ -10,6 +10,8 @@
 							<xs:element name="name" type="xs:string" />
 							<xs:element name="cost" type="xs:decimal" />
 							<xs:element name="weight" type="xs:decimal" />
+							<xs:element name="imageUrl" type="xs:string" />
+							<xs:element name="dollarValue" type="xs:decimal" />
 						</xs:sequence>
 						<xs:attribute name="id" type="xs:string" use="required" />
 					</xs:complexType>

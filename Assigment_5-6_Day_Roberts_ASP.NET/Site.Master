@@ -36,6 +36,42 @@
          table.noborder, table.noborder td, table.noborder th {
              border: none !important;
          }
+        .modal {
+            position: fixed;
+            top: 50%;           
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            background: #fff;
+            border: 2px solid #333;
+            padding: 16px 24px;
+            z-index: 9999;
+            width: 320px;
+            max-width: 90vw;
+            max-height: 60vh;
+            overflow-y: auto;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .error-modal {
+            position: fixed;
+            top: 50%;           
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            background: #fff;
+            border: 2px solid #333;
+            padding: 16px 24px;
+            z-index: 9999;
+            width: 320px;
+            max-width: 90vw;
+            max-height: 20vh;
+            overflow-y: auto;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            text-align: center;
+            box-sizing: border-box;
+        }
     </style>
 
 </head>

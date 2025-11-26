@@ -34,4 +34,11 @@
             </td>
         </tr>
     </table>
+    <!-- Modal for messages -->
+    <asp:Panel ID="pnlModal" runat="server" CssClass="error-modal" Style="display:none;">
+        <asp:Label ID="lblModalMessage" runat="server" ForeColor="Red" />
+        <br />
+        <br />
+        <asp:Button ID="btnCloseModal" runat="server" Text="Close" OnClick="btnCloseModal_Click" />
+    </asp:Panel>
 </asp:Content>

@@ -23,6 +23,12 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text;
 
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                ShowModalMessage("Please enter both username and password.");
+                return;
+            }
+
             var encryptedPassword = Assignment_5_6_Day_Roberts_NET_DLL.Crypto_NET.Hash(password);
 
             var user = ValidateStaffUser(username, encryptedPassword);
@@ -43,7 +49,7 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
             }
             else 
             {
-                lblMessage.Text = "Invalid username or password.";
+                ShowModalMessage("Invalid username or password.");
             }
 
         }
@@ -62,6 +68,21 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
                     && (string)x.Element("passwordHash") == password);
 
             return user;
+        }
+
+        protected void btnCloseModal_Click(object sender, EventArgs e)
+        {
+            pnlModal.Style["display"] = "none";
+            ScriptManager.RegisterStartupScript(this, GetType(), "hideModal",
+                $"document.getElementById('{pnlModal.ClientID}').style.display='none';", true);
+        }
+
+        private void ShowModalMessage(string message)
+        {
+            lblModalMessage.Text = message;
+            pnlModal.Style["display"] = "block";
+            ScriptManager.RegisterStartupScript(this, GetType(), "showModal",
+                $"document.getElementById('{pnlModal.ClientID}').style.display='block';", true);
         }
     }
 }

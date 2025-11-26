@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Staff Login</h2>
-    <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
+     <p>To login as a test staff member -- Username: TA / Password: Cse445!</p>
     <br />
     <p>
         <asp:Label runat="server" Text="Username:" AssociatedControlID="txtUsername" />
@@ -14,4 +14,12 @@
     </p>
     <br />
     <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
+
+    <!-- Modal for messages -->
+    <asp:Panel ID="pnlModal" runat="server" CssClass="error-modal" Style="display:none;">
+        <asp:Label ID="lblModalMessage" runat="server" ForeColor="Red" />
+        <br />
+        <br />
+        <asp:Button ID="btnCloseModal" runat="server" Text="Close" OnClick="btnCloseModal_Click" />
+    </asp:Panel>
 </asp:Content>
