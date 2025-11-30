@@ -50,6 +50,19 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
             GenerateCaptcha();
         }
 
+        public bool IsValid
+        {
+            get
+            {
+                string entered = txtCaptchaInput.Text.Trim();
+                string expected = Session[CaptchaSessionKey] as string;
+
+                return !string.IsNullOrEmpty(entered) && 
+                       !string.IsNullOrEmpty(expected) && 
+                       entered.Equals(expected, StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
         // Optional: Expose a property to check if CAPTCHA is valid
         public bool IsCaptchaValid => lblCaptchaResult.Text == "CAPTCHA correct!";
 

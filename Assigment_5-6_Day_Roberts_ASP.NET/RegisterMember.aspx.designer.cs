@@ -51,6 +51,15 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
         protected global::System.Web.UI.WebControls.TextBox txtConfirmPassword;
 
         /// <summary>
+        /// CaptchaControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Assigment_5_6_Day_Roberts_ASP.NET.Captcha CaptchaControl;
+
+        /// <summary>
         /// btnRegister control.
         /// </summary>
         /// <remarks>

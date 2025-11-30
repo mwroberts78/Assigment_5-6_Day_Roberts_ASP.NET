@@ -24,6 +24,13 @@ namespace Assigment_5_6_Day_Roberts_ASP.NET
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
+            // Validate Captcha
+            if (!CaptchaControl.IsValid)
+            {
+                ShowModalMessage("Captcha validation failed. Please try again.");
+                return;
+            }
+
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text;
             string confirmPassword = txtConfirmPassword.Text;

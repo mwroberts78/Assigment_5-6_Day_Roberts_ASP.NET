@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Register Member" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterMember.aspx.cs" Inherits="Assigment_5_6_Day_Roberts_ASP.NET.RegisterMember" %>
+﻿<%@ Register Src="~/Captcha_Control/Captcha.ascx" TagPrefix="uc" TagName="Captcha" %>
+<%@ Page Title="Register Member" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RegisterMember.aspx.cs" Inherits="Assigment_5_6_Day_Roberts_ASP.NET.RegisterMember" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Register New Member</h2>
     <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
@@ -26,6 +27,16 @@
             </td>
             <td>
                 <asp:TextBox ID="txtConfirmPassword" runat="server" TextMode="Password" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label runat="server" Text="Captcha:" AssociatedControlID="CaptchaControl" />
+            </td>
+        </tr>
+        <tr>
+            <td  colspan="2" style="text-align:left;">
+                <uc:Captcha ID="CaptchaControl" runat="server" />
             </td>
         </tr>
         <tr>
